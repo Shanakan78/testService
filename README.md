@@ -27,7 +27,7 @@ createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updatedAt TIMESTAMP DEFAULT CURRE
 ตัวอย่าง API request/response
 
 # ดึงข้อมูลสินค้า
-(GET) : http://localhost:3000/products : 
+request (GET) : http://localhost:3000/products 
 [
     {
         "id": 1,
@@ -46,5 +46,56 @@ createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updatedAt TIMESTAMP DEFAULT CURRE
     }
 ]
 
+
 # เพิ่มข้อมูลสินค้า
-(POST) : http://localhost:3000/cart : ข้อมูลสินค้า
+request (POST) : http://localhost:3000/cart 
+body json : 
+------------------
+# json data
+{
+"productId": 1,
+"quantity": 2
+}
+-------------------------------------------
+# response 
+{
+    "id": 1,
+    "productId": 1,
+    "product": {
+        "id": 1,
+        "name": "หมอน",
+        "price": 250
+    },
+    "quantity": 2,
+    "createdAt": "2025-05-04T10:46:47.000Z",
+    "updatedAt": "2025-05-04T10:46:47.000Z"
+}
+------------------------------------------
+
+# ข้อมูลคำสั่งซื้อสินค้าในตะกร้า
+request (GET) : http://localhost:3000/cart 
+--------------------------------------------------
+# response 
+{
+    "items": [
+        {
+            "id": 1,
+            "name": "หมอน",
+            "quantity": 2,
+            "unitPrice": 250,
+            "totalPrice": 500
+        }
+    ],
+    "totalQuantity": 2,
+    "totalPrice": 500
+}
+---------------------------------------------------
+
+# ลบข้อมูลคำสั่งซื้อสินค้าในตะกร้า
+request (DELETE) : http://localhost:3000/:cartItemId 
+--------------------------------------------------
+# response 
+{
+    "message": "Item removed"
+}
+---------------------------------------------------
