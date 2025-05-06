@@ -51,4 +51,14 @@ export class CartService {
     if (result.affected === 0) throw new Error('Cart item not found');
     return { message: 'Item removed' };
   }
+
+  // async onModuleInit() {  ใช้สำหรับ add data ตรงๆในนี้
+  //   const count = await this.cartItemRepo.count();
+  //   if (count === 0) {
+  //     await this.cartItemRepo.insert([
+  //       { productId: 1, quantity: 2 },
+  //       { productId: 2, quantity: 1 },
+  //     ]);
+  //   }
+  // }
 }

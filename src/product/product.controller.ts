@@ -10,3 +10,4 @@ export class ProductController {
     return this.productService.getAll();
   }
 }
+

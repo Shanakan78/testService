@@ -10,6 +10,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Product } from './product/product.entity';
 import { DataSource } from 'typeorm';
+// import { LoggingInterceptor } from './common/logging.interceptor';
+import { TransformInterceptor } from './common/transform.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -26,6 +28,12 @@ async function bootstrap() {
     ]);
     console.log('✅ Seeded product data!');
   }
+
+    // ใช้ Interceptors แบบ Global
+    app.useGlobalInterceptors(
+      // new LoggingInterceptor(),
+      new TransformInterceptor(), // ⬅️ ตรงนี้คือ response wrapper
+    );
 
   await app.listen(3000);
 }
