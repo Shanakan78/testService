@@ -9,7 +9,7 @@ git clone https://github.com/Shanakan78/testService.git
   - สร้าง database ชื่อ testdata จากนั้นเลือก sql และทำการ excute จาก sql ด้านล่าง
 
 
-================================================================================================================== 
+============================================================================================ 
 
 CREATE TABLE Product (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,12 +22,13 @@ quantity INTEGER NOT NULL,
 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (productId) REFERENCES Product(id)
 );
 
-====================================================================================================================
+=============================================================================================
 
 ตัวอย่าง API request/response
 
 # ดึงข้อมูลสินค้า
 request (GET) : http://localhost:3000/products 
+# response
 [
     {
         "id": 1,
